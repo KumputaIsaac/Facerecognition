@@ -1,0 +1,6 @@
+.bounding-box{
+    position: absolute;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid black;
+}
