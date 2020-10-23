@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import './app.css'
 import Clarifai from 'clarifai'
 import Navigation from './components/Navigation/Navigation'
+import Navigation2 from './components/Navigation/Navgation2'
+import Register from './components/Register/Register'
+import Signin from './components/Signin/Signin'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Logo from './components/Logo/Logo'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition'
@@ -52,16 +56,28 @@ export default class App extends Component {
     .catch(err=>console.log("error"))
   }
 
-  
-// &&response.output[0].data.regions[0]&&response.output[0].data.regions[0]&&response.output[0].data.regions[0].region_info.bounding_box
   render() { 
     return (
       <React.Fragment>
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm onchange={this.onchange} onclick={this.onclick}/>
-        <FaceRecognition box={this.state.box} imageurl={this.state.imageurl}/>
+        <Router>
+            <Switch>
+            <Route exact path="/">
+              <Navigation/>
+              <Signin />
+            </Route>
+            <Route path="/home">
+            <Navigation2/>
+              <Logo />
+              <Rank />
+              <ImageLinkForm onchange={this.onchange} onclick={this.onclick}/>
+              <FaceRecognition box={this.state.box} imageurl={this.state.imageurl}/>
+            </Route>
+            <Route path="/register">
+              <Navigation/>
+              <Register />
+            </Route>
+          </Switch>
+        </Router>
       </React.Fragment>
     )
   }
