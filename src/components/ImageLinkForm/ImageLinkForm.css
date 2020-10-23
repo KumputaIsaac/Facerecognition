@@ -1,3 +1,11 @@
 .form{
     width: 700px;
 }
+input:focus, button:focus{
+    outline: none;
+}
+
+ button{
+     padding: 1px !important;
+     border: none !important;
+ }

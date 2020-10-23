@@ -18,7 +18,7 @@ export default class App extends Component {
   constructor(){
     super();
     this.state={
-      input:'',
+      input:'https://images.firstpost.com/wp-content/uploads/2019/08/mia-khalifa-380.jpg?impolicy=website&width=320&height=180',
       imageurl:'',
       box:{}
     }
@@ -37,8 +37,8 @@ export default class App extends Component {
     
   }
   displayFacebox=(box)=>{
-    console.log(box)
-    this.setstate({box:box}) 
+    this.setState({box:box})
+    console.log(this.state.box)
   }
   onchange=(e)=>{
     this.setState({input:e.target.value})
@@ -48,7 +48,7 @@ export default class App extends Component {
     console.log("submit")
     this.setState({imageurl:this.state.input})
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input, {language: 'zh'})
-    .then( response => this.displayFacebox(this.calculatefacelocation(response)))
+    .then( response => this.displayFacebox((this.calculatefacelocation(response))))
     .catch(err=>console.log("error"))
   }
 

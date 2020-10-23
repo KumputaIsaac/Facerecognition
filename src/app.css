@@ -3,6 +3,7 @@ body{
     padding: 0;
     text-align: center;
     background-image: linear-gradient(to right, rgb(66, 189, 189) , aqua);
+    margin-bottom: 500px !important;
 }
 
 .center{
